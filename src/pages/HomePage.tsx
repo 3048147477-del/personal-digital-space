@@ -3,6 +3,7 @@ import { Link } from '../router'
 import { CategoryArtwork } from '../components/CategoryArtwork'
 import { EmptyState } from '../components/EmptyState'
 import { ArrowRight, ArrowUpRight } from '../components/Icons'
+import { ProfilePortrait } from '../components/ProfilePortrait'
 import { Reveal } from '../components/Reveal'
 import {
   collectionMeta,
@@ -28,7 +29,7 @@ const journeyPrompts = [
 
 export function HomePage() {
   useEffect(() => {
-    document.title = '个人数字空间｜经历与长期收藏'
+    document.title = `${profile.name}｜个人数字空间`
   }, [])
 
   return (
@@ -62,7 +63,7 @@ export function HomePage() {
           <aside className="hero__aside" aria-label="当前状态">
             <span className="status-note__label">现在</span>
             <p>{profile.currentStatus}</p>
-            <span className="status-note__hint">等待你提供一条真实近况</span>
+            <span className="status-note__hint">来自 {profile.location}</span>
           </aside>
 
           <div className="hero__trace" aria-hidden="true">
@@ -75,11 +76,7 @@ export function HomePage() {
       <section className="section scene about-preview" data-nav-tone="default">
         <div className="container grid-12">
           <Reveal className="about-preview__portrait parallax-media">
-            <div className="portrait-placeholder" role="img" aria-label="人物图片待补充">
-              <span className="portrait-placeholder__name">YOU</span>
-              <span className="portrait-placeholder__note">人物图片待补充</span>
-              <span className="portrait-placeholder__orbit" aria-hidden="true" />
-            </div>
+            <ProfilePortrait src={profile.avatar} name={profile.name} />
           </Reveal>
 
           <Reveal className="about-preview__copy" delay={100}>

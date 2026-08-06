@@ -9,11 +9,18 @@ import type {
 } from '../types'
 
 export const profile: Profile = {
-  name: '名字待补充',
-  shortBio: '这里会放一段真实、简短的自我介绍。它不需要概括一切，只需要让第一次来的人知道你是谁。',
-  longBio: '关于你的成长、选择和现在正在做的事，都会在你提供真实资料后写进这里。基础版本先保留结构，不替你编造故事。',
-  currentStatus: '当前状态待补充',
-  links: [],
+  name: '旺角西多士',
+  shortBio: '我是旺角西多士，来自海南文昌。22 岁的我还在慢慢认识世界，也正在学习成为一名 AI 训练师。很多别人早已习惯的事物，对我仍然新鲜；我想保留这份新鲜感，一点点找到自己的生活。',
+  longBio: '我今年 22 岁，很多东西现在才刚开始接触。成长得慢一些，不只意味着错过：那些别人早已习惯甚至厌倦的事物，对我来说仍然新鲜。我想从这些迟来的第一次出发，逐渐寻找真正属于自己的生活，也慢慢认识自己。',
+  currentStatus: '正在学习成为一名 AI 训练师，也在逐渐寻找自己的生活。',
+  location: '海南文昌 · 椰子国，槟榔乡',
+  avatar: '/images/wangjiaoxiduoshi-avatar.jpg',
+  links: [
+    {
+      label: '3048147477@proton.me',
+      href: 'mailto:3048147477@proton.me',
+    },
+  ],
 }
 
 export const experiences: Experience[] = []

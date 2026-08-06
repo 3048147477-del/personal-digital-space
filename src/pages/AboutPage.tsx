@@ -1,12 +1,13 @@
 import { ArrowUpRight } from '../components/Icons'
 import { PageHeader } from '../components/PageHeader'
+import { ProfilePortrait } from '../components/ProfilePortrait'
 import { Reveal } from '../components/Reveal'
 import { profile } from '../data/content'
 
-const aboutPrompts = [
-  ['身份与经历', '你希望别人首先知道的身份，以及它们之间的关系。'],
-  ['在意的事情', '长期影响你选择、创作和生活方式的几件事。'],
-  ['现在的状态', '此刻正在做什么，正在学习什么，或者正在等待什么。'],
+const aboutNotes = [
+  ['慢一点，也没关系', '22 岁的我还有许多事情刚刚开始接触。慢并不只有遗憾，它也让我仍能认真体会一些对别人来说早已普通的事。', '关于成长'],
+  ['正在学习', '我目前正在学习成为一名 AI 训练师。比起急着定义未来，我更想先理解眼前的新事物，再决定自己要走向哪里。', '现在'],
+  ['想留下的印象', '比起一个职业标签，我更希望来访的人记住我身上独特的气质。它不急着被总结，会在经历和收藏里慢慢显出来。', '关于气质'],
 ]
 
 export function AboutPage() {
@@ -14,18 +15,14 @@ export function AboutPage() {
     <>
       <PageHeader
         title="关于我"
-        description="这个页面不会用几个标签快速定义一个人。它会从真实经历、选择与日常兴趣开始。"
-        meta={<span className="meta-line">个人资料待补充</span>}
+        description="我是旺角西多士。这里不急着给我下定义，只先说清楚我从哪里来、正在学什么，以及为什么还在慢慢寻找自己的生活。"
+        meta={<span className="meta-line">{profile.name} · {profile.location}</span>}
       />
 
       <section className="section scene about-story" data-nav-tone="default">
         <div className="container grid-12">
           <Reveal className="about-story__portrait">
-            <div className="portrait-placeholder portrait-placeholder--tall" role="img" aria-label="人物图片待补充">
-              <span className="portrait-placeholder__name">YOU</span>
-              <span className="portrait-placeholder__note">人物图片待补充</span>
-              <span className="portrait-placeholder__orbit" aria-hidden="true" />
-            </div>
+            <ProfilePortrait src={profile.avatar} name={profile.name} tall />
           </Reveal>
           <Reveal className="about-story__copy" delay={100}>
             <h2>{profile.name}</h2>
@@ -41,12 +38,12 @@ export function AboutPage() {
       <section className="section scene about-prompts" data-nav-tone="default">
         <div className="container">
           <div className="about-prompt-list">
-            {aboutPrompts.map(([title, description], index) => (
+            {aboutNotes.map(([title, description, label], index) => (
               <Reveal key={title} delay={Math.min(index * 70, 140)}>
                 <article className="about-prompt">
                   <h2>{title}</h2>
                   <p>{description}</p>
-                  <span>等待真实内容</span>
+                  <span>{label}</span>
                 </article>
               </Reveal>
             ))}
@@ -57,15 +54,24 @@ export function AboutPage() {
       <section className="section scene contact-panel" data-nav-tone="inverse">
         <div className="container grid-12">
           <Reveal className="contact-panel__copy" variant="line">
-            <h2>如果想继续了解我，联系方式会放在这里。</h2>
+            <h2>如果想继续聊聊，可以给我写封邮件。</h2>
           </Reveal>
           <Reveal className="contact-panel__links" delay={100}>
             {profile.links.length > 0 ? (
-              profile.links.map((link) => (
-                <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
-                  {link.label} <ArrowUpRight />
-                </a>
-              ))
+              profile.links.map((link) => {
+                const opensNewTab = link.href.startsWith('http')
+
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target={opensNewTab ? '_blank' : undefined}
+                    rel={opensNewTab ? 'noreferrer' : undefined}
+                  >
+                    {link.label} <ArrowUpRight />
+                  </a>
+                )
+              })
             ) : (
               <p>邮箱与公开社交账号待补充。</p>
             )}

@@ -704,6 +704,31 @@ p {
   contain: paint;
 }
 
+.profile-portrait {
+  position: relative;
+  min-height: clamp(28rem, 48vw, 43rem);
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-image);
+  contain: paint;
+}
+
+.profile-portrait--tall {
+  min-height: clamp(36rem, 60vw, 52rem);
+}
+
+.profile-portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 46%;
+}
+
 .portrait-placeholder--tall {
   min-height: clamp(36rem, 60vw, 52rem);
 }
@@ -1413,10 +1438,22 @@ p {
   letter-spacing: -0.025em;
 }
 
-.site-footer__statement span {
+.site-footer__statement span,
+.site-footer__statement a {
   display: block;
   margin-top: 1.5rem;
   color: var(--text-tertiary);
+}
+
+.site-footer__statement a {
+  width: fit-content;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.3em;
+}
+
+.site-footer__statement a:hover,
+.site-footer__statement a:focus-visible {
+  color: var(--accent-hover);
 }
 
 .site-footer__links {
@@ -1685,7 +1722,9 @@ p {
   }
 
   .portrait-placeholder,
-  .portrait-placeholder--tall {
+  .portrait-placeholder--tall,
+  .profile-portrait,
+  .profile-portrait--tall {
     min-height: min(125vw, 38rem);
   }
 

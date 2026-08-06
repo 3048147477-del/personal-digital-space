@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { Link, NavLink, useLocation } from '../router'
+import { profile } from '../data/content'
 import { ArrowUpRight, CloseIcon, MenuIcon, MoonIcon, SunIcon } from './Icons'
 
 const navItems = [
@@ -87,7 +88,7 @@ function Header({ theme, onThemeToggle }: { theme: Theme; onThemeToggle: () => v
         <div className="site-header__inner container">
           <Link className="site-mark" to="/" aria-label="返回首页">
             <span className="site-mark__dot" aria-hidden="true" />
-            <span>个人数字空间</span>
+            <span>{profile.name}</span>
           </Link>
 
           <nav className="desktop-nav" aria-label="主导航">
@@ -145,12 +146,14 @@ function Header({ theme, onThemeToggle }: { theme: Theme; onThemeToggle: () => v
 }
 
 function Footer() {
+  const email = profile.links.find((link) => link.href.startsWith('mailto:'))
+
   return (
     <footer className="site-footer">
       <div className="container site-footer__inner">
         <div className="site-footer__statement">
           <p>如果你对这里的某段经历或某样收藏感兴趣，欢迎回来继续看看。</p>
-          <span>公开联系方式待补充</span>
+          {email ? <a href={email.href}>{email.label}</a> : null}
         </div>
         <div className="site-footer__links">
           <Link to="/about">关于我</Link>
@@ -158,7 +161,7 @@ function Footer() {
           <Link to="/shelf">收藏馆</Link>
         </div>
         <div className="site-footer__meta">
-          <span>个人数字空间</span>
+          <span>{profile.name}的个人数字空间</span>
           <span>内容持续整理中</span>
         </div>
       </div>
