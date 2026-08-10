@@ -9,6 +9,7 @@ import { Reveal } from './Reveal'
 type CollectionItem = Game | Book | Music | Film
 
 const getCover = (item: CollectionItem) => ('poster' in item ? item.poster : item.cover)
+const getArtwork = (item: CollectionItem) => ('artwork' in item && item.artwork ? item.artwork : getCover(item))
 
 const getDetails = (kind: CollectionKind, item: CollectionItem) => {
   if (kind === 'games') {
@@ -67,7 +68,22 @@ export function CollectionPage({ kind }: { kind: CollectionKind }) {
                 <Reveal key={item.id} delay={Math.min(index * 70, 280)}>
                   <article className={`media-entry media-entry--${kind}`}>
                     <div className="media-entry__cover">
-                      <img src={getCover(item)} alt={`${item.title}封面`} loading="lazy" />
+                      <img
+                        src={getArtwork(item)}
+                        alt={`${item.title}封面`}
+                        loading="lazy"
+                        decoding="async"
+                        referrerPolicy="no-referrer"
+                        onError={(event) => {
+                          const fallback = getCover(item)
+                          if (event.currentTarget.dataset.fallback !== 'true' && event.currentTarget.src !== fallback) {
+                            event.currentTarget.dataset.fallback = 'true'
+                            event.currentTarget.src = fallback
+                            return
+                          }
+                          event.currentTarget.hidden = true
+                        }}
+                      />
                     </div>
                     <div className="media-entry__body">
                       <h2>{item.title}</h2>
@@ -77,6 +93,16 @@ export function CollectionPage({ kind }: { kind: CollectionKind }) {
                         ))}
                       </div>
                       {'note' in item && item.note && <p>{item.note}</p>}
+                      {'externalUrl' in item && item.externalUrl && (
+                        <a
+                          className="media-entry__link"
+                          href={item.externalUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          在网易云音乐查看 <ArrowUpRight size={17} />
+                        </a>
+                      )}
                     </div>
                   </article>
                 </Reveal>

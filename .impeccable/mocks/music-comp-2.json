@@ -1,0 +1,8 @@
+{
+  "kind": "surface-comp",
+  "route": "/shelf/music",
+  "direction": "年度歌单折页",
+  "variant": "平面六格风琴折",
+  "prompt": "Create a high-fidelity 1440x1000 desktop web UI mockup for the Chinese personal digital-space music page. Keep the established warm off-white paper, charcoal sans-serif, quiet mint accent, thin dividers and generous asymmetry. Use the real headline 六首歌，来自我的 2025 年度歌单。 and arrange six real square covers as one flat horizontal accordion strip numbered 01-06, followed by an alternating liner-note index. Do not invent play counts, rankings, genres, reviews or other platforms.",
+  "approved": true
+}

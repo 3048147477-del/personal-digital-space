@@ -20,13 +20,121 @@ export const profile: Profile = {
       label: '3048147477@proton.me',
       href: 'mailto:3048147477@proton.me',
     },
+    {
+      label: 'Steam',
+      href: 'https://steamcommunity.com/profiles/76561198450138818',
+    },
+    {
+      label: '网易云音乐',
+      href: 'https://music.163.com/#/user/home?id=449747118',
+    },
   ],
 }
 
 export const experiences: Experience[] = []
-export const games: Game[] = []
+export const games: Game[] = [
+    {
+      id: 'counter-strike-2',
+      title: 'Counter-Strike 2',
+      cover: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/capsule_616x353.jpg',
+      artwork: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/library_hero.jpg',
+    platforms: ['PC', 'Steam'],
+    hours: 1764,
+    updatedAt: '2026-07-19',
+  },
+  {
+      id: 'dont-starve-together',
+      title: '饥荒联机版',
+      cover: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322330/capsule_616x353.jpg',
+      artwork: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322330/library_hero.jpg',
+    platforms: ['PC', 'Steam'],
+    hours: 382,
+    note: '“巨好玩！！”——我在 Steam 留下的公开评测。',
+    updatedAt: '2026-07-09',
+  },
+  {
+      id: 'grand-theft-auto-v-enhanced',
+      title: 'Grand Theft Auto V 增强版',
+      cover: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/header_2x.jpg',
+      artwork: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/library_hero.jpg',
+    platforms: ['PC', 'Steam'],
+    hours: 169,
+    updatedAt: '2026-07-08',
+  },
+  {
+      id: 'red-dead-redemption-2',
+      title: '荒野大镖客：救赎 2',
+      cover: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_616x353.jpg',
+      artwork: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/library_hero.jpg',
+    platforms: ['PC', 'Steam'],
+    hours: 119.2,
+    note: '“RED Dead Redemption 2 永远的神！”——我在 2023 年留下的 Steam 公开评测。',
+    updatedAt: '2023-08-06',
+  },
+]
 export const books: Book[] = []
-export const music: Music[] = []
+export const music: Music[] = [
+  {
+    id: 'jacky-cheung-true-love-expression',
+    title: '真情流露',
+    artist: '张学友',
+    cover: 'https://p1.music.126.net/WnUag3-ayASzbwDlIMGR4g==/109951169502337739.jpg',
+    kind: '单曲',
+    externalUrl: 'https://music.163.com/#/song?id=190545',
+    note: '收录在我的 2025 年度歌单。',
+    updatedAt: '2025-12-29',
+  },
+  {
+    id: 'jacky-cheung-after-leaving',
+    title: '离开以后',
+    artist: '张学友',
+    cover: 'https://p1.music.126.net/R7YSGl_0witBfdWf9mufsw==/109951169426794963.jpg',
+    kind: '单曲',
+    externalUrl: 'https://music.163.com/#/song?id=189841',
+    note: '收录在我的 2025 年度歌单。',
+    updatedAt: '2025-12-29',
+  },
+  {
+    id: 'alan-tam-grateful-without-words',
+    title: '无言感激',
+    artist: '谭咏麟',
+    cover: 'https://p1.music.126.net/HNsE3Rop6IbPH_joAeQ5Kw==/109951172051775586.jpg',
+    kind: '单曲',
+    externalUrl: 'https://music.163.com/#/song?id=4871704',
+    note: '收录在我的 2025 年度歌单。',
+    updatedAt: '2025-12-29',
+  },
+  {
+    id: 'jj-lin-jiang-nan',
+    title: '江南',
+    artist: '林俊杰',
+    cover: 'https://p1.music.126.net/Gk4t93WwafRZtt9nTS77Iw==/109951171891430447.jpg',
+    kind: '单曲',
+    externalUrl: 'https://music.163.com/#/song?id=108914',
+    note: '收录在我的 2025 年度歌单。',
+    updatedAt: '2025-12-29',
+  },
+  {
+    id: 'time-savings-jar-journey',
+    title: 'Journey',
+    artist: '时空储蓄罐',
+    cover: 'https://p1.music.126.net/tlwiCdeOGeQGtp8fl4QgeQ==/109951170456461821.jpg',
+    kind: '单曲',
+    externalUrl: 'https://music.163.com/#/song?id=2672411882',
+    note: '收录在我的 2025 年度歌单。',
+    updatedAt: '2025-12-29',
+  },
+  {
+    id: 'faith-yang-push-open-the-door-live',
+    title: '推开世界的门 (Live)',
+    artist: '杨乃文',
+    cover: 'https://p1.music.126.net/a9jDaNy0LHI9_QaFDzJzZQ==/109951166557912027.jpg',
+    kind: '单曲',
+    externalUrl: 'https://music.163.com/#/song?id=1350658589',
+    note: '收录在我的 2025 年度歌单。',
+    updatedAt: '2025-12-29',
+  },
+]
 export const films: Film[] = []
 
 export const collections = {
@@ -35,6 +143,12 @@ export const collections = {
   music,
   films,
 }
+
+export const getCollectionArtworkItems = (kind: CollectionKind) =>
+  collections[kind].map((item) => ({
+    src: 'poster' in item ? item.poster : item.cover,
+    label: item.title,
+  }))
 
 export interface CollectionMeta {
   kind: CollectionKind
@@ -94,6 +208,10 @@ export const collectionMeta: CollectionMeta[] = [
     mark: 'WATCH',
   },
 ]
+
+export const publicCollectionMeta = collectionMeta.filter(
+  (item) => collections[item.kind].length > 0,
+)
 
 export const getCollectionMeta = (kind: CollectionKind) =>
   collectionMeta.find((item) => item.kind === kind) as CollectionMeta

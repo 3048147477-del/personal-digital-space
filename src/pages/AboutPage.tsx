@@ -1,49 +1,94 @@
+import { useEffect } from 'react'
 import { ArrowUpRight } from '../components/Icons'
-import { PageHeader } from '../components/PageHeader'
 import { ProfilePortrait } from '../components/ProfilePortrait'
 import { Reveal } from '../components/Reveal'
 import { profile } from '../data/content'
 
+const identityFacts = [
+  ['公开昵称', profile.name],
+  ['年龄', '22 岁'],
+  ['来自', '海南文昌'],
+  ['现在', '学习成为 AI 训练师'],
+]
+
 const aboutNotes = [
-  ['慢一点，也没关系', '22 岁的我还有许多事情刚刚开始接触。慢并不只有遗憾，它也让我仍能认真体会一些对别人来说早已普通的事。', '关于成长'],
-  ['正在学习', '我目前正在学习成为一名 AI 训练师。比起急着定义未来，我更想先理解眼前的新事物，再决定自己要走向哪里。', '现在'],
-  ['想留下的印象', '比起一个职业标签，我更希望来访的人记住我身上独特的气质。它不急着被总结，会在经历和收藏里慢慢显出来。', '关于气质'],
+  {
+    title: '慢一点，也没关系',
+    description: '22 岁的我还有许多事情刚刚开始接触。慢并不只有遗憾，它也让我仍能认真体会一些对别人来说早已普通的事。',
+  },
+  {
+    title: '现在在学什么',
+    description: '我目前正在学习成为一名 AI 训练师。这是我现在在做的事，但不是我的全部身份。比起急着定义未来，我更想先理解眼前的新事物。',
+  },
+  {
+    title: '希望你记住什么',
+    description: '比起一个职业标签，我更希望来访的人记住我身上的独特气质。它很难靠一句话说清楚，会在我经历过、玩过和听过的东西里慢慢显出来。',
+  },
 ]
 
 export function AboutPage() {
+  useEffect(() => {
+    document.title = `关于我｜个人数字空间`
+  }, [])
+
   return (
     <>
-      <PageHeader
-        title="关于我"
-        description="我是旺角西多士。这里不急着给我下定义，只先说清楚我从哪里来、正在学什么，以及为什么还在慢慢寻找自己的生活。"
-        meta={<span className="meta-line">{profile.name} · {profile.location}</span>}
-      />
+      <section className="about-archive-hero scene" data-nav-tone="default">
+        <div className="container grid-12 about-archive-hero__grid">
+          <div className="about-archive-hero__copy">
+            <h1 className="about-archive-hero__title">
+              <span>我暂时不急着，</span>
+              <span>给自己下定义。</span>
+            </h1>
+            <p>
+              我是旺角西多士。这里先说清楚我从哪里来、正在学什么，以及为什么还在慢慢寻找自己的生活。
+            </p>
+          </div>
 
-      <section className="section scene about-story" data-nav-tone="default">
-        <div className="container grid-12">
-          <Reveal className="about-story__portrait">
-            <ProfilePortrait src={profile.avatar} name={profile.name} tall />
+          <aside className="about-archive-hero__index" aria-label="个人事实">
+            <dl>
+              {identityFacts.map(([label, value]) => (
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section className="about-portrait-story scene" data-nav-tone="default">
+        <div className="container grid-12 about-portrait-story__grid">
+          <Reveal className="about-portrait-story__media">
+            <ProfilePortrait src={profile.avatar} name={profile.name} priority />
+            <p>目前的公开头像：一只穿着西装的柴犬。</p>
           </Reveal>
-          <Reveal className="about-story__copy" delay={100}>
-            <h2>{profile.name}</h2>
+
+          <Reveal className="about-portrait-story__copy" delay={100}>
+            <h2>成长得慢一些，世界也还新鲜。</h2>
             <p>{profile.longBio}</p>
-            <div className="about-story__status">
-              <span>当前状态</span>
+            <div className="about-current">
+              <span>现在正在做</span>
               <strong>{profile.currentStatus}</strong>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section className="section scene about-prompts" data-nav-tone="default">
+      <section className="section scene about-reflections" data-nav-tone="default">
         <div className="container">
-          <div className="about-prompt-list">
-            {aboutNotes.map(([title, description, label], index) => (
-              <Reveal key={title} delay={Math.min(index * 70, 140)}>
-                <article className="about-prompt">
-                  <h2>{title}</h2>
-                  <p>{description}</p>
-                  <span>{label}</span>
+          <Reveal className="about-reflections__heading" variant="line">
+            <h2>我现在这样理解自己。</h2>
+            <p>这些不是固定答案，只是我在这个阶段愿意认真说出来的部分。</p>
+          </Reveal>
+
+          <div className="about-reflections__list">
+            {aboutNotes.map((note, index) => (
+              <Reveal key={note.title} delay={Math.min(index * 80, 160)}>
+                <article className="about-reflection">
+                  <h3>{note.title}</h3>
+                  <p>{note.description}</p>
                 </article>
               </Reveal>
             ))}
@@ -51,12 +96,12 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="section scene contact-panel" data-nav-tone="inverse">
-        <div className="container grid-12">
-          <Reveal className="contact-panel__copy" variant="line">
-            <h2>如果想继续聊聊，可以给我写封邮件。</h2>
+      <section className="about-contact scene" data-nav-tone="inverse">
+        <div className="container grid-12 about-contact__grid">
+          <Reveal className="about-contact__copy" variant="line">
+            <h2>想聊聊游戏、音乐，或者只是认识一下我。</h2>
           </Reveal>
-          <Reveal className="contact-panel__links" delay={100}>
+          <Reveal className="about-contact__links" delay={100}>
             {profile.links.length > 0 ? (
               profile.links.map((link) => {
                 const opensNewTab = link.href.startsWith('http')
