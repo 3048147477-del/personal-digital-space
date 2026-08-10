@@ -2,9 +2,15 @@ interface ProfilePortraitProps {
   src?: string
   name: string
   tall?: boolean
+  priority?: boolean
 }
 
-export function ProfilePortrait({ src, name, tall = false }: ProfilePortraitProps) {
+export function ProfilePortrait({
+  src,
+  name,
+  tall = false,
+  priority = false,
+}: ProfilePortraitProps) {
   if (src) {
     return (
       <figure className={`profile-portrait${tall ? ' profile-portrait--tall' : ''}`}>
@@ -13,7 +19,8 @@ export function ProfilePortrait({ src, name, tall = false }: ProfilePortraitProp
           alt={`${name}的头像：一只穿着西装的柴犬`}
           width="736"
           height="736"
-          loading="lazy"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : 'auto'}
           decoding="async"
         />
       </figure>

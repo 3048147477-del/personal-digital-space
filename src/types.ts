@@ -29,9 +29,10 @@ export interface Game {
   id: string
   title: string
   cover: string
+  artwork?: string
   platforms?: string[]
   hours?: number
-  status: '在玩' | '通关' | '搁置' | '弃坑'
+  status?: '在玩' | '通关' | '搁置' | '弃坑'
   year?: number
   note?: string
   updatedAt: string

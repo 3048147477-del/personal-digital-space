@@ -2,8 +2,10 @@ import type { ReactNode } from 'react'
 import { CollectionPage } from './components/CollectionPage'
 import { SiteLayout } from './components/SiteLayout'
 import { AboutPage } from './pages/AboutPage'
+import { GamesPage } from './pages/GamesPage'
 import { HomePage } from './pages/HomePage'
 import { JourneyPage } from './pages/JourneyPage'
+import { MusicPage } from './pages/MusicPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { ShelfPage } from './pages/ShelfPage'
 import { RouterProvider, useLocation } from './router'
@@ -16,9 +18,9 @@ function CurrentRoute() {
     '/about': <AboutPage />,
     '/journey': <JourneyPage />,
     '/shelf': <ShelfPage />,
-    '/shelf/games': <CollectionPage kind="games" />,
+    '/shelf/games': <GamesPage />,
     '/shelf/books': <CollectionPage kind="books" />,
-    '/shelf/music': <CollectionPage kind="music" />,
+    '/shelf/music': <MusicPage />,
     '/shelf/films': <CollectionPage kind="films" />,
   }
 

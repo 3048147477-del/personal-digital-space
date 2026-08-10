@@ -6,7 +6,6 @@ import { ArrowUpRight, CloseIcon, MenuIcon, MoonIcon, SunIcon } from './Icons'
 const navItems = [
   { label: '首页', path: '/' },
   { label: '关于我', path: '/about' },
-  { label: '经历', path: '/journey' },
   { label: '收藏馆', path: '/shelf' },
 ]
 
@@ -152,12 +151,11 @@ function Footer() {
     <footer className="site-footer">
       <div className="container site-footer__inner">
         <div className="site-footer__statement">
-          <p>如果你对这里的某段经历或某样收藏感兴趣，欢迎回来继续看看。</p>
+          <p>想聊聊游戏、音乐，或者只是想认识我，可以给我写邮件。</p>
           {email ? <a href={email.href}>{email.label}</a> : null}
         </div>
         <div className="site-footer__links">
           <Link to="/about">关于我</Link>
-          <Link to="/journey">经历</Link>
           <Link to="/shelf">收藏馆</Link>
         </div>
         <div className="site-footer__meta">
