@@ -45,7 +45,11 @@ export interface Book {
   cover: string
   status: '在读' | '读完' | '想读'
   finishedAt?: string
+  externalUrl?: string
   note?: string
+  source?: 'weread' | 'manual'
+  sourceId?: string
+  addedAt?: string
   updatedAt: string
 }
 
@@ -57,6 +61,10 @@ export interface Music {
   kind: '单曲' | '专辑'
   externalUrl?: string
   note?: string
+  source?: 'netease' | 'manual'
+  sourceId?: string
+  addedAt?: string
+  featured?: boolean
   updatedAt: string
 }
 

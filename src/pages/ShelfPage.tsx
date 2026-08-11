@@ -2,11 +2,15 @@ import { useEffect } from 'react'
 import { ArrowUpRight } from '../components/Icons'
 import { RecentCollectionList } from '../components/RecentCollectionList'
 import { Reveal } from '../components/Reveal'
-import { games, music, profile } from '../data/content'
+import { books, films, games, music, profile } from '../data/content'
 import { Link } from '../router'
 
 const totalGameHours = games.reduce((sum, game) => sum + (game.hours ?? 0), 0)
-const totalRecords = games.length + music.length
+const totalRecords = games.length + books.length + music.length + films.length
+const musicPreview = [...music]
+  .sort((left, right) => right.updatedAt.localeCompare(left.updatedAt))
+  .slice(0, 6)
+const syncedMusicCount = music.reduce((count, track) => count + (track.addedAt ? 1 : 0), 0)
 
 const formatHours = (hours: number) => new Intl.NumberFormat('zh-CN', {
   maximumFractionDigits: 1,
@@ -16,6 +20,8 @@ const shelfFacts = [
   ['公开记录', `${totalRecords} 条`],
   ['游戏', `${games.length} 款`],
   ['音乐', `${music.length} 首`],
+  ...(books.length > 0 ? [['书籍', `${books.length} 本`]] : []),
+  ...(films.length > 0 ? [['电影', `${films.length} 部`]] : []),
   ['Steam 记录', `${formatHours(totalGameHours)} 小时`],
 ]
 
@@ -34,7 +40,9 @@ export function ShelfPage() {
               <span>认真喜欢过的东西。</span>
             </h1>
             <p>
-              目前先公开游戏与音乐。书籍和电影不会用占位填满，等我真正留下第一条记录后再加入。
+              {books.length > 0
+                ? '目前公开游戏、音乐与书籍。电影不会用占位填满，等我真正留下第一条记录后再加入。'
+                : '目前先公开游戏与音乐。书籍和电影不会用占位填满，等我真正留下第一条记录后再加入。'}
             </p>
           </div>
 
@@ -103,7 +111,11 @@ export function ShelfPage() {
         <div className="container grid-12 shelf-music__grid">
           <Reveal className="shelf-music__copy" variant="line">
             <h2>反复听过的声音</h2>
-            <p>现在收录的是我的 2025 年度歌单片段。它们不代表完整品味，只是这一阶段确实留下来的声音。</p>
+            <p>
+              {syncedMusicCount > 0
+                ? `从 2025 年度歌单开始，后来又有 ${syncedMusicCount} 首真实记录加入。这里不代表完整品味，只留下可以确认的名字。`
+                : '现在收录的是我的 2025 年度歌单片段。它们不代表完整品味，只是这一阶段确实留下来的声音。'}
+            </p>
             <span>{music.length} 首公开记录</span>
             <Link className="text-link" to="/shelf/music">
               查看全部音乐记录 <ArrowUpRight size={18} />
@@ -111,7 +123,7 @@ export function ShelfPage() {
           </Reveal>
 
           <div className="shelf-music-sheet">
-            {music.map((track, index) => (
+            {musicPreview.map((track, index) => (
               <Reveal key={track.id} delay={Math.min(index * 60, 240)}>
                 <Link
                   className="shelf-music-record"
@@ -151,16 +163,29 @@ export function ShelfPage() {
         </div>
       </section>
 
-      <section className="shelf-future scene" data-nav-tone="inverse">
-        <div className="container grid-12 shelf-future__grid">
-          <Reveal className="shelf-future__copy" variant="line">
-            <h2>还有两层，先空着。</h2>
-          </Reveal>
-          <Reveal className="shelf-future__note" delay={100}>
-            <p>书籍和电影会在我真正想留下一条记录时出现。在那之前，这里不摆假封面。</p>
-          </Reveal>
-        </div>
-      </section>
+      {(books.length === 0 || films.length === 0) ? (
+        <section className="shelf-future scene" data-nav-tone="inverse">
+          <div className="container grid-12 shelf-future__grid">
+            <Reveal className="shelf-future__copy" variant="line">
+              <h2>{books.length > 0 ? '书架打开了，电影还空着。' : '还有两层，先空着。'}</h2>
+            </Reveal>
+            <Reveal className="shelf-future__note" delay={100}>
+              <p>
+                {books.length > 0
+                  ? `书架已经有 ${books.length} 本真实记录；电影会在第一条记录出现后再开放。`
+                  : '书籍和电影会在我真正想留下一条记录时出现。在那之前，这里不摆假封面。'}
+              </p>
+              {books.length > 0 ? (
+                <div className="music-outro__actions">
+                  <Link to="/shelf/books">
+                    查看书籍记录 <ArrowUpRight size={18} />
+                  </Link>
+                </div>
+              ) : null}
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
     </>
   )
 }
