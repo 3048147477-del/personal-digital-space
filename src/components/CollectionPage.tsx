@@ -10,6 +10,11 @@ type CollectionItem = Game | Book | Music | Film
 
 const getCover = (item: CollectionItem) => ('poster' in item ? item.poster : item.cover)
 const getArtwork = (item: CollectionItem) => ('artwork' in item && item.artwork ? item.artwork : getCover(item))
+const getExternalLinkLabel = (kind: CollectionKind) => {
+  if (kind === 'books') return '在微信读书查看'
+  if (kind === 'music') return '在网易云音乐查看'
+  return '查看原始页面'
+}
 
 const getDetails = (kind: CollectionKind, item: CollectionItem) => {
   if (kind === 'games') {
@@ -100,7 +105,7 @@ export function CollectionPage({ kind }: { kind: CollectionKind }) {
                           target="_blank"
                           rel="noreferrer"
                         >
-                          在网易云音乐查看 <ArrowUpRight size={17} />
+                          {getExternalLinkLabel(kind)} <ArrowUpRight size={17} />
                         </a>
                       )}
                     </div>

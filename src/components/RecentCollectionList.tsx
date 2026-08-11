@@ -25,7 +25,11 @@ export function RecentCollectionList({ limit = 4 }: { limit?: number }) {
         ? `${formatHours(item.hours)} 小时`
         : 'artist' in item
           ? item.artist
-          : undefined,
+          : 'author' in item
+            ? `${item.author} · ${item.status}`
+            : 'director' in item
+              ? item.director
+              : undefined,
     })))
     .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
     .slice(0, limit)

@@ -12,6 +12,8 @@
 
 ## 项目长期上下文
 
-- 每次 plan 或 coding 前先读取根目录的 `project-context.md`。
-- 当已确认的定位、页面、技术、设计、内容模型或项目阶段发生变化时，在同一次修改中更新 `project-context.md`。
-- `project-context.md` 是项目事实真源；不要把猜测、临时调试信息、密钥或个人敏感数据写入其中。
+- 每次 plan 或 coding 前先读取根目录的 `project-context.md`；它是当前快照和上下文路由，不再包含全部历史。
+- 根据 `project-context.md` 的“按任务读取”表，只加载当前目标需要的分类文档；实际导入收藏时读取 `CONTENT_SYNC.md`，不要默认读取全部 `PRODUCT.md`、`DESIGN.md` 和 `docs/context/`。
+- 当已确认的定位、页面、技术、设计、内容模型或项目阶段发生变化时，在同一次修改中更新对应分类文档；只有当前快照变化时才同步更新 `project-context.md`。
+- 历史原因只追加到 `docs/context/decisions.md`，不要重新堆回根上下文。
+- 不要把猜测、临时调试信息、密钥、Cookie、Token 或个人敏感数据写入长期上下文。

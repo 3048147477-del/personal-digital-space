@@ -8,15 +8,21 @@ import type { Music } from '../types'
 
 const DIRECTION_CONTRACT = `
 MUSIC PAGE V2
-THESIS: Six verified songs become one unfolded annual-playlist insert; refuse the generic media-card grid.
+THESIS: Six verified songs remain one unfolded annual-playlist insert while later additions continue in the ledger.
 OWN-WORLD: Quiet Reveal paper, charcoal type, mint details, square covers, fine fold rules, restrained image lift.
-STORY: See the complete 2025 set, follow each numbered record, then continue on NetEase Cloud Music or return to the shelf.
+STORY: See the complete 2025 set, continue through later additions, then open NetEase Cloud Music or return to the shelf.
 FIRST VIEWPORT: Narrow headline at left; six equal cover panels form one wide accordion fold at right; the ledger begins below.
 FORM: Grounded structure 4, flat six-panel foldout, seed a9e52f2e.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
 `.trim()
 
 const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
+const addedDateFormatter = new Intl.DateTimeFormat('zh-CN', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+})
+const formatAddedDate = (date: string) => addedDateFormatter.format(new Date(`${date}T00:00:00`))
 
 function MusicCover({ track, loading = 'lazy' }: { track: Music; loading?: 'eager' | 'lazy' }) {
   return (
@@ -37,7 +43,10 @@ function MusicCover({ track, loading = 'lazy' }: { track: Music; loading?: 'eage
 
 export function MusicPage() {
   const cloudProfile = profile.links.find((link) => link.label === '网易云音乐')
-  const artistCount = new Set(music.map((track) => track.artist)).size
+  const markedFeaturedMusic = music.filter((track) => track.featured)
+  const featuredMusic = markedFeaturedMusic.length > 0 ? markedFeaturedMusic.slice(0, 6) : music.slice(0, 6)
+  const artistCount = new Set(featuredMusic.map((track) => track.artist)).size
+  const addedMusicCount = music.reduce((count, track) => count + (track.addedAt ? 1 : 0), 0)
 
   useEffect(() => {
     document.title = `音乐｜${profile.name}`
@@ -65,12 +74,12 @@ export function MusicPage() {
               <span>2025 年度歌单。</span>
             </h1>
             <p>
-              {music.length} 首歌，{artistCount} 位音乐人。这里没有播放次数和排行榜，只把那份歌单里真实留下的声音摊开。
+              {featuredMusic.length} 首歌，{artistCount} 位音乐人。这里没有播放次数和排行榜，只把那份歌单里真实留下的声音摊开。
             </p>
           </Reveal>
 
-          <ol className="music-foldout" aria-label="2025 年度歌单中的六首歌">
-            {music.map((track, index) => {
+          <ol className="music-foldout" aria-label={`2025 年度歌单中的 ${featuredMusic.length} 首歌`}>
+            {featuredMusic.map((track, index) => {
               const content = (
                 <>
                   <MusicCover track={track} loading="eager" />
@@ -108,12 +117,18 @@ export function MusicPage() {
         <div className="container">
           <div className="music-ledger__heading">
             <Reveal variant="line">
-              <h2>摊开以后，是六首歌的名字。</h2>
+              <h2>{addedMusicCount > 0 ? '年度六首之后，新的声音继续加入。' : '摊开以后，是六首歌的名字。'}</h2>
             </Reveal>
             <Reveal delay={100}>
-              <p>
-                它们都来自同一份 2025 年度歌单。逐条保留歌曲、音乐人和原始平台入口，不替过去的自己补写新的理由。
-              </p>
+              {addedMusicCount > 0 ? (
+                <p>
+                  首屏仍保留 2025 年度歌单；后来加入的 {addedMusicCount} 首按首次进入本站的日期记录，不把它写成真实收听时间。
+                </p>
+              ) : (
+                <p>
+                  它们都来自同一份 2025 年度歌单。逐条保留歌曲、音乐人和原始平台入口，不替过去的自己补写新的理由。
+                </p>
+              )}
             </Reveal>
           </div>
 
@@ -134,7 +149,10 @@ export function MusicPage() {
                       <MusicCover track={track} />
                       <span className="music-track__copy">
                         <strong>{track.title}</strong>
-                        <span>{track.artist} · {track.kind}</span>
+                        <span>
+                          {track.artist} · {track.kind}
+                          {track.addedAt ? ` · ${formatAddedDate(track.addedAt)}加入本站` : ''}
+                        </span>
                       </span>
                       <span className="music-track__action">
                         在网易云音乐查看 <ArrowUpRight size={18} />
@@ -148,7 +166,10 @@ export function MusicPage() {
                       <MusicCover track={track} />
                       <span className="music-track__copy">
                         <strong>{track.title}</strong>
-                        <span>{track.artist} · {track.kind}</span>
+                        <span>
+                          {track.artist} · {track.kind}
+                          {track.addedAt ? ` · ${formatAddedDate(track.addedAt)}加入本站` : ''}
+                        </span>
                       </span>
                     </article>
                   )}
@@ -162,10 +183,14 @@ export function MusicPage() {
       <section className="music-outro scene" data-nav-tone="default">
         <div className="container music-outro__grid">
           <Reveal variant="line">
-            <h2>这页先停在这六首。</h2>
+            <h2>{addedMusicCount > 0 ? `现在，这里有 ${music.length} 首。` : '这页先停在这六首。'}</h2>
           </Reveal>
           <Reveal className="music-outro__body" delay={100}>
-            <p>新的真实记录会继续放进收藏馆；现在可以回到歌单原页，或者去看看别的收藏。</p>
+            <p>
+              {addedMusicCount > 0
+                ? '年度歌单没有被新记录替换；它留在开头，后面的声音继续按真实资料加入。'
+                : '新的真实记录会继续放进收藏馆；现在可以回到歌单原页，或者去看看别的收藏。'}
+            </p>
             <div className="music-outro__actions">
               {cloudProfile && (
                 <a href={cloudProfile.href} target="_blank" rel="noreferrer">

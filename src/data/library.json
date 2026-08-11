@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "books": [],
+  "music": [
+    {
+      "id": "jacky-cheung-true-love-expression",
+      "title": "真情流露",
+      "artist": "张学友",
+      "cover": "https://p1.music.126.net/WnUag3-ayASzbwDlIMGR4g==/109951169502337739.jpg",
+      "kind": "单曲",
+      "externalUrl": "https://music.163.com/#/song?id=190545",
+      "note": "收录在我的 2025 年度歌单。",
+      "source": "netease",
+      "sourceId": "190545",
+      "featured": true,
+      "updatedAt": "2025-12-29"
+    },
+    {
+      "id": "jacky-cheung-after-leaving",
+      "title": "离开以后",
+      "artist": "张学友",
+      "cover": "https://p1.music.126.net/R7YSGl_0witBfdWf9mufsw==/109951169426794963.jpg",
+      "kind": "单曲",
+      "externalUrl": "https://music.163.com/#/song?id=189841",
+      "note": "收录在我的 2025 年度歌单。",
+      "source": "netease",
+      "sourceId": "189841",
+      "featured": true,
+      "updatedAt": "2025-12-29"
+    },
+    {
+      "id": "alan-tam-grateful-without-words",
+      "title": "无言感激",
+      "artist": "谭咏麟",
+      "cover": "https://p1.music.126.net/HNsE3Rop6IbPH_joAeQ5Kw==/109951172051775586.jpg",
+      "kind": "单曲",
+      "externalUrl": "https://music.163.com/#/song?id=4871704",
+      "note": "收录在我的 2025 年度歌单。",
+      "source": "netease",
+      "sourceId": "4871704",
+      "featured": true,
+      "updatedAt": "2025-12-29"
+    },
+    {
+      "id": "jj-lin-jiang-nan",
+      "title": "江南",
+      "artist": "林俊杰",
+      "cover": "https://p1.music.126.net/Gk4t93WwafRZtt9nTS77Iw==/109951171891430447.jpg",
+      "kind": "单曲",
+      "externalUrl": "https://music.163.com/#/song?id=108914",
+      "note": "收录在我的 2025 年度歌单。",
+      "source": "netease",
+      "sourceId": "108914",
+      "featured": true,
+      "updatedAt": "2025-12-29"
+    },
+    {
+      "id": "time-savings-jar-journey",
+      "title": "Journey",
+      "artist": "时空储蓄罐",
+      "cover": "https://p1.music.126.net/tlwiCdeOGeQGtp8fl4QgeQ==/109951170456461821.jpg",
+      "kind": "单曲",
+      "externalUrl": "https://music.163.com/#/song?id=2672411882",
+      "note": "收录在我的 2025 年度歌单。",
+      "source": "netease",
+      "sourceId": "2672411882",
+      "featured": true,
+      "updatedAt": "2025-12-29"
+    },
+    {
+      "id": "faith-yang-push-open-the-door-live",
+      "title": "推开世界的门 (Live)",
+      "artist": "杨乃文",
+      "cover": "https://p1.music.126.net/a9jDaNy0LHI9_QaFDzJzZQ==/109951166557912027.jpg",
+      "kind": "单曲",
+      "externalUrl": "https://music.163.com/#/song?id=1350658589",
+      "note": "收录在我的 2025 年度歌单。",
+      "source": "netease",
+      "sourceId": "1350658589",
+      "featured": true,
+      "updatedAt": "2025-12-29"
+    }
+  ]
+}

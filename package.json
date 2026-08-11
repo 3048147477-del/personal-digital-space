@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc -b --pretty false"
+    "typecheck": "tsc -b --pretty false",
+    "content:sync": "node scripts/content-sync.mjs",
+    "content:sync:test": "node --test scripts/content-sync.test.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",
