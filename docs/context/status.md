@@ -38,7 +38,7 @@
 - 默认分支：`main`。
 - V2 通过 PR `#1` 以 merge commit 合入，合并提交为 `912f053`。
 - 后续上下文修订提交 `9876f9c` 已推送至 `main`。
-- 同步中心与上下文分类已提交到 `agent/content-sync-v1`，首个提交为 `e455e35`；GitHub 草稿 PR `#2` 指向 `main`，尚未合并。
+- 同步中心与上下文分类已通过 GitHub PR `#2` 以 merge commit 合入 `main`，合并提交为 `a40f810`；发布分支 `agent/content-sync-v1` 暂时保留。
 
 ## 待完成
 
