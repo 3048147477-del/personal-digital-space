@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="一个关于个人经历、创造与长期兴趣收藏的数字空间。"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/personal-digital-space/favicon.svg" type="image/svg+xml" />
+    <title>个人数字空间</title>
+    <script>
+      document.documentElement.classList.add('js')
+      try {
+        const savedTheme = localStorage.getItem('personal-space-theme')
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light')
+      } catch {
+        document.documentElement.dataset.theme = 'light'
+      }
+    </script>
+    <script type="module" crossorigin src="/personal-digital-space/assets/index-D4FMZk_Z.js"></script>
+    <link rel="stylesheet" crossorigin href="/personal-digital-space/assets/index-oA-N8LYy.css">
+  </head>
+  <body>
+    <!--
+      THESIS: A living personal annual uses one specific person and verified records to refuse the beige-card portfolio template.
+      OWN-WORLD: Pure white paper, charcoal type, neutral-gray chapters, cobalt and coral slips, fine rules, real-media contact sheets, parenthetical navigation, and physical controls.
+      STORY: Meet the person, see where his time went, then open the full shelf or the longer about page.
+      FIRST VIEWPORT: A 64px index nav, a massive two-line Chinese claim, a compact folio at lower right, a factual ledger, and the dark shelf fold exposed below.
+      FORM: Candidate 7, Living Index; direction seed ec48047a; approved composition B with a full interaction translation of all four references.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
+    <div id="root"></div>
+  </body>
+</html>
