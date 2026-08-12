@@ -8,6 +8,7 @@ import {
   type MouseEvent,
   type ReactNode,
 } from 'react'
+import { flushSync } from 'react-dom'
 
 interface RouterState {
   pathname: string
@@ -16,16 +17,42 @@ interface RouterState {
 
 const RouterContext = createContext<RouterState | null>(null)
 
+const basePath = import.meta.env.BASE_URL === '/'
+  ? ''
+  : import.meta.env.BASE_URL.replace(/\/+$/, '')
+
+const toBrowserPath = (pathname: string) => {
+  if (!basePath) return pathname
+  return pathname === '/' ? `${basePath}/` : `${basePath}${pathname}`
+}
+
 const getPathname = () => {
-  const pathname = window.location.pathname || '/'
+  const browserPathname = window.location.pathname || '/'
+  const pathname = basePath && browserPathname.startsWith(`${basePath}/`)
+    ? browserPathname.slice(basePath.length) || '/'
+    : browserPathname === basePath ? '/' : browserPathname
   return pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname
+}
+
+type TransitionDocument = Document & {
+  startViewTransition?: (update: () => void) => unknown
+}
+
+const commitWithTransition = (update: () => void) => {
+  const transitionDocument = document as TransitionDocument
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (!transitionDocument.startViewTransition || reduceMotion) {
+    update()
+    return
+  }
+  transitionDocument.startViewTransition(() => flushSync(update))
 }
 
 export function RouterProvider({ children }: { children: ReactNode }) {
   const [pathname, setPathname] = useState(getPathname)
 
   useEffect(() => {
-    const handlePopState = () => setPathname(getPathname())
+    const handlePopState = () => commitWithTransition(() => setPathname(getPathname()))
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
@@ -36,8 +63,10 @@ export function RouterProvider({ children }: { children: ReactNode }) {
       navigate: (to) => {
         const nextPath = to.length > 1 ? to.replace(/\/+$/, '') : to
         if (nextPath === pathname) return
-        window.history.pushState(null, '', nextPath)
-        setPathname(nextPath)
+        commitWithTransition(() => {
+          window.history.pushState(null, '', toBrowserPath(nextPath))
+          setPathname(nextPath)
+        })
       },
     }),
     [pathname],
@@ -79,7 +108,7 @@ export function Link({ to, onClick, target, children, ...props }: LinkProps) {
   }
 
   return (
-    <a {...props} href={to} target={target} onClick={handleClick}>
+    <a {...props} href={toBrowserPath(to)} target={target} onClick={handleClick}>
       {children}
     </a>
   )

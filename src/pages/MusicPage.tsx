@@ -6,16 +6,6 @@ import { music, profile } from '../data/content'
 import { Link } from '../router'
 import type { Music } from '../types'
 
-const DIRECTION_CONTRACT = `
-MUSIC PAGE V2
-THESIS: Six verified songs remain one unfolded annual-playlist insert while later additions continue in the ledger.
-OWN-WORLD: Quiet Reveal paper, charcoal type, mint details, square covers, fine fold rules, restrained image lift.
-STORY: See the complete 2025 set, continue through later additions, then open NetEase Cloud Music or return to the shelf.
-FIRST VIEWPORT: Narrow headline at left; six equal cover panels form one wide accordion fold at right; the ledger begins below.
-FORM: Grounded structure 4, flat six-panel foldout, seed a9e52f2e.
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
-`.trim()
-
 const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
 const addedDateFormatter = new Intl.DateTimeFormat('zh-CN', {
   year: 'numeric',
@@ -50,13 +40,6 @@ export function MusicPage() {
 
   useEffect(() => {
     document.title = `音乐｜${profile.name}`
-
-    const contractComment = document.createComment(DIRECTION_CONTRACT)
-    document.body.insertBefore(contractComment, document.body.firstChild)
-
-    return () => {
-      contractComment.remove()
-    }
   }, [])
 
   if (music.length === 0) {

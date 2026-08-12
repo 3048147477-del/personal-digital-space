@@ -24,7 +24,13 @@ function CurrentRoute() {
     '/shelf/films': <CollectionPage kind="films" />,
   }
 
-  return <SiteLayout>{routes[pathname] ?? <NotFoundPage />}</SiteLayout>
+  return (
+    <SiteLayout>
+      <div className="route-stage" key={pathname}>
+        {routes[pathname] ?? <NotFoundPage />}
+      </div>
+    </SiteLayout>
+  )
 }
 
 export default function App() {

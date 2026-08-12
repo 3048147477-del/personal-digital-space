@@ -38,6 +38,19 @@ npm.cmd run content:sync -- --dry-run "https://music.163.com/playlist?id=歌单I
 
 ## 微信读书
 
+### 已登录账号的官方书架同步
+
+项目已安装腾讯官方微信读书 Skill：`.agents/skills/weread`。它使用本机用户环境变量 `WEREAD_API_KEY` 调用官方 Agent API Gateway，不读取浏览器 Cookie。
+
+- API Key 只保存在本机用户环境变量中，不写入项目文件或 GitHub。
+- 先调用官方书架接口，再只保留 `secret == 0` 的公开书籍作为候选。
+- `finishReading` 与最近阅读时间只用于生成状态建议；本站的“在读 / 读完 / 想读”仍需本人确认。
+- 输出候选后仍执行“预览 → 确认 → 写入 `src/data/library.json`”流程。
+
+在 Codex 中可直接说“查看我的微信读书书架并生成网站导入预览”。
+
+### 单本公开分享链接
+
 微信读书的公开页面不能可靠说明一本书是“在读、读完还是想读”，因此必须由你明确提供：
 
 ```powershell

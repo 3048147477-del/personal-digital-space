@@ -1,5 +1,5 @@
 import { ArrowUpRight } from './Icons'
-import { Reveal } from './Reveal'
+import { Reveal, type RevealVariant } from './Reveal'
 import { collections, publicCollectionMeta } from '../data/content'
 import { Link } from '../router'
 
@@ -12,7 +12,13 @@ const formatRecordDate = (date: string) => new Intl.DateTimeFormat('zh-CN', {
   month: 'short',
 }).format(new Date(`${date}T00:00:00`))
 
-export function RecentCollectionList({ limit = 4 }: { limit?: number }) {
+export function RecentCollectionList({
+  limit = 4,
+  revealVariant = 'soft',
+}: {
+  limit?: number
+  revealVariant?: RevealVariant
+}) {
   const recentItems = publicCollectionMeta
     .flatMap((meta) => collections[meta.kind].map((item) => ({
       id: `${meta.kind}-${item.id}`,
@@ -37,7 +43,7 @@ export function RecentCollectionList({ limit = 4 }: { limit?: number }) {
   return (
     <div className="recent-list">
       {recentItems.map((item, index) => (
-        <Reveal key={item.id} delay={Math.min(index * 70, 210)}>
+        <Reveal key={item.id} delay={Math.min(index * 90, 270)} variant={revealVariant}>
           <Link className="recent-item" to={item.path}>
             <span className="recent-item__image">
               <img

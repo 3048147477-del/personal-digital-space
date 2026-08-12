@@ -10,7 +10,7 @@ interface CategoryArtworkProps {
 }
 
 export function CategoryArtwork({ kind, mark, images = [] }: CategoryArtworkProps) {
-  const mediaLimit = kind === 'music' ? 6 : kind === 'games' ? 4 : 1
+  const mediaLimit = kind === 'music' ? 6 : kind === 'games' ? 4 : kind === 'books' ? 3 : 1
   const visibleImages = images.slice(0, mediaLimit)
   const hasMedia = visibleImages.length > 0
 

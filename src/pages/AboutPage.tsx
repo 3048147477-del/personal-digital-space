@@ -96,7 +96,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="about-contact scene" data-nav-tone="inverse">
+      <section className="about-contact scene" data-nav-tone="default">
         <div className="container grid-12 about-contact__grid">
           <Reveal className="about-contact__copy" variant="line">
             <h2>想聊聊游戏、音乐，或者只是认识一下我。</h2>

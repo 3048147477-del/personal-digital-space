@@ -15,7 +15,7 @@ export const profile: Profile = {
   longBio: '我今年 22 岁，很多东西现在才刚开始接触。成长得慢一些，不只意味着错过：那些别人早已习惯甚至厌倦的事物，对我来说仍然新鲜。我想从这些迟来的第一次出发，逐渐寻找真正属于自己的生活，也慢慢认识自己。',
   currentStatus: '正在学习成为一名 AI 训练师，也在逐渐寻找自己的生活。',
   location: '海南文昌 · 椰子国，槟榔乡',
-  avatar: '/images/wangjiaoxiduoshi-avatar.jpg',
+  avatar: `${import.meta.env.BASE_URL}images/wangjiaoxiduoshi-avatar.jpg`,
   links: [
     {
       label: '3048147477@proton.me',

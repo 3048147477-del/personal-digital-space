@@ -1,6 +1,151 @@
 {
   "version": 1,
-  "books": [],
+  "books": [
+    {
+      "id": "weread-23934830",
+      "title": "巨人的工具",
+      "author": "蒂姆·费里斯",
+      "cover": "https://wfqqreader-1252317822.image.myqcloud.com/cover/830/23934830/t9_23934830.jpg",
+      "status": "在读",
+      "externalUrl": "https://weread.qq.com/book-detail?type=1&v=4b4327a0716d376e4b489f0",
+      "source": "weread",
+      "sourceId": "23934830",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "weread-921568",
+      "title": "原则",
+      "author": "瑞·达利欧",
+      "cover": "https://cdn.weread.qq.com/weread/cover/23/YueWen_921568/t9_YueWen_921568.jpg",
+      "status": "在读",
+      "externalUrl": "https://weread.qq.com/book-detail?type=1&v=848324405e0fe08483ab6a4",
+      "source": "weread",
+      "sourceId": "921568",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "weread-42766048",
+      "title": "枪炮、病菌与钢铁",
+      "author": "贾雷德·戴蒙德",
+      "cover": "https://cdn.weread.qq.com/weread/cover/99/YueWen_42766048/t9_YueWen_42766048.jpg",
+      "status": "读完",
+      "externalUrl": "https://weread.qq.com/book-detail?type=1&v=843329f0728c8ee08434fb1",
+      "source": "weread",
+      "sourceId": "42766048",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "weread-44026191",
+      "title": "纳瓦尔宝典",
+      "author": "埃里克·乔根森",
+      "cover": "https://cdn.weread.qq.com/weread/cover/89/YueWen_44026191/t9_YueWen_44026191.jpg",
+      "status": "在读",
+      "externalUrl": "https://weread.qq.com/book-detail?type=1&v=e1e32b00729fc94fe1e824d",
+      "source": "weread",
+      "sourceId": "44026191",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "weread-914613",
+      "title": "千年金融史：金融如何塑造文明，从5000年前到21世纪",
+      "author": "威廉·戈兹曼",
+      "cover": "https://cdn.weread.qq.com/weread/cover/76/YueWen_914613/t9_YueWen_914613.jpg",
+      "status": "在读",
+      "externalUrl": "https://weread.qq.com/book-detail?type=1&v=b3c32a205df4b5b3c640369",
+      "source": "weread",
+      "sourceId": "914613",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "weread-609080",
+      "title": "世界上最神奇的24堂课",
+      "author": "哈奈尔",
+      "cover": "https://wfqqreader-1252317822.image.myqcloud.com/cover/80/609080/t9_609080.jpg",
+      "status": "在读",
+      "externalUrl": "https://weread.qq.com/book-detail?type=1&v=1cb32a40594b381cbcdf850",
+      "source": "weread",
+      "sourceId": "609080",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "weread-30216451",
+      "title": "大学迷茫问答",
+      "author": "晋早",
+      "cover": "https://wfqqreader-1252317822.image.myqcloud.com/cover/451/30216451/t9_30216451.jpg",
+      "status": "读完",
+      "externalUrl": "https://weread.qq.com/book-detail?type=1&v=559321d071cd1103559512b",
+      "source": "weread",
+      "sourceId": "30216451",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "weread-909893",
+      "title": "深度工作：如何有效使用每一点脑力",
+      "author": "卡尔·纽波特",
+      "cover": "https://cdn.weread.qq.com/weread/cover/16/yuewen_909893/t9_yuewen_9098931775031546.jpg",
+      "status": "在读",
+      "externalUrl": "https://weread.qq.com/book-detail?type=1&v=0e5327005de2450e58c115d",
+      "source": "weread",
+      "sourceId": "909893",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "weread-35364704",
+      "title": "不拘一格：网飞的自由与责任工作法",
+      "author": "里德·哈斯廷斯 艾琳·迈耶",
+      "cover": "https://cdn.weread.qq.com/weread/cover/76/YueWen_35364704/t9_YueWen_35364704.jpg",
+      "status": "在读",
+      "externalUrl": "https://weread.qq.com/book-detail?type=1&v=04d32ae0721b9f6004dff5c",
+      "source": "weread",
+      "sourceId": "35364704",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "weread-3300046986",
+      "title": "不原谅也没关系",
+      "author": "[美]皮特·沃克",
+      "cover": "https://cdn.weread.qq.com/weread/cover/89/cpplatform_5m7j6mw2t6q8xamtgbr4eh/t9_cpplatform_5m7j6mw2t6q8xamtgbr4eh1675067330.jpg",
+      "status": "在读",
+      "externalUrl": "https://weread.qq.com/book-detail?type=1&v=5a832b90813ab78dag016aaa",
+      "source": "weread",
+      "sourceId": "3300046986",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "weread-3300064234",
+      "title": "金钱心理学：财富、人性和幸福的永恒真相",
+      "author": "摩根·豪泽尔",
+      "cover": "https://cdn.weread.qq.com/weread/cover/84/cpplatform_5w7t185qhfj9qfxdrrfytz/t9_cpplatform_5w7t185qhfj9qfxdrrfytz1689561935.jpg",
+      "status": "在读",
+      "externalUrl": "https://weread.qq.com/book-detail?type=1&v=6ab326d0813ab7f97g014662",
+      "source": "weread",
+      "sourceId": "3300064234",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-11"
+    },
+    {
+      "id": "weread-33628204",
+      "title": "认知觉醒：开启自我改变的原动力",
+      "author": "周岭",
+      "cover": "https://cdn.weread.qq.com/weread/cover/86/YueWen_33628204/t9_YueWen_33628204.jpg",
+      "status": "在读",
+      "externalUrl": "https://weread.qq.com/book-detail?type=1&v=6a732ce07201202c6a7b30a",
+      "source": "weread",
+      "sourceId": "33628204",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-11"
+    }
+  ],
   "music": [
     {
       "id": "jacky-cheung-true-love-expression",
