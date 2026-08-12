@@ -1,0 +1,17 @@
+---
+description: 个人数字空间的按需上下文路由与维护规则
+globs:
+alwaysApply: true
+---
+
+# 项目上下文规则
+
+@project-context.md
+
+- 每次规划或编码先读取根目录 `project-context.md`。
+- 根文件只保存当前快照、事实边界和文档路由；不要要求它重复所有产品、设计、内容、技术和历史细节。
+- 按当前任务加载：产品与页面读 `PRODUCT.md`；视觉读 `DESIGN.md`；个人资料与收藏读 `docs/context/content.md`；实际导入收藏读 `CONTENT_SYNC.md`；工程读 `docs/context/technical.md`；进度读 `docs/context/status.md`；只有追溯原因时才读 `docs/context/decisions.md`。
+- 一次只处理一个明确目标，不为“以防万一”加载无关分类。
+- 已确认事实变化时更新对应分类文档；当前阶段或顶层事实变化时才更新根索引。
+- 不编造经历、收藏、时长、状态、评分、日期或感想。
+- 不将密码、Cookie、Token、私密数据或临时调试信息写入长期上下文与仓库。

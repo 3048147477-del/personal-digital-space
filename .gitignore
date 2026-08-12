@@ -1,0 +1,11 @@
+node_modules
+dist
+.vite
+*.local
+*.log
+.DS_Store
+.impeccable/review-v2/
+.impeccable/critique/
+.impeccable/mocks/*
+!.impeccable/mocks/music-comp-2.json
+!.impeccable/mocks/music-comp-2.png
